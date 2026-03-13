@@ -5,11 +5,33 @@
     <meta charset="UTF-8">
     <meta name="author" content="Voloshko Viktoriia">
     <title>Головна</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            /* Новий фоновий колір саме для цієї сторінки */
+            background-color: #debdd2 ; 
+        }
+        a {
+            color: #3a0429; /* Змінюємо колір на фіолетовий */
+            font-weight: bold;
+            text-decoration: underline; /* Додаємо підкреслення */
+            transition: 0.3s;
+        }
+
+        
+        a:hover {
+            color: #e67e22; /* Помаранчевий при наведенні */
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 
-<body bgcolor="#E0F7FF" link="indigo" vlink="purple" alink="red">
+<body>
 
-    <h1 align="center">Voloshko Bakery</h1>
+   <h1 style="color: #2c3e50; font-size: 36px; text-align: center; text-transform: uppercase; font-family: 'Segoe Script', cursive;">
+    Voloshko Bakery
+</h1>
 
     <hr>
 
@@ -22,11 +44,11 @@
 
     <hr>
 
-    <p><strong>Voloshko Bakery</strong> — це місце, де народжуються найсмачніші та найкрасивіші десерти міста.</p>
+    <p class="intro-text"><strong>Voloshko Bakery</strong> — це місце, де народжуються найсмачніші та найкрасивіші десерти міста.</p>
 
-    <p>У нашій кондитерській ви можете замовити святкові торти, ніжні макаруни, ароматні еклери та багато інших смаколиків для будь-якої події.</p>
+    <p class="intro-text">У нашій кондитерській ви можете замовити святкові торти, ніжні макаруни, ароматні еклери та багато інших смаколиків для будь-якої події.</p>
 
-    <h3 align="center"><em>Наш простір</em></h3>
+    <h3 align="center">Наш простір</h3>
 
     <div style="text-align: center;">
         <a href="images/bakery.png" target="_blank">
@@ -51,7 +73,7 @@
         <dt><b>Еклер</b></dt>
         <dd>Довгасте тістечко із заварного тіста, наповнене заварним кремом та вкрите глазур'ю.</dd>
 
-        <dt><b>Чізкейк</b></dt>
+        <dt><b>Чизкейк</b></dt>
         <dd>Десерт на основі сиру (зазвичай вершкового), з основою з пісочного печива.</dd>
 
         <dt><b>Тарт</b></dt>
