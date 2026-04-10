@@ -32,7 +32,7 @@ a:visited {
 }
 
 a:hover {
-    color: #3498db !important; 
+    color: #3498db; 
     text-decoration: underline;
 }
 
@@ -116,8 +116,81 @@ tr > td {
     line-height: 1.8;
 }
 
-h2 ~ p {
+h2 + p {
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
+}
+
+.brand-name {
+    color: #6f2ec0;
+    font-weight: bold;
+}
+
+h1 {
+    position: fixed;    
+    top: 0;             
+    left: 0;           
+    width: 100%;       
+    margin: 0;         
+    background-color: #e7dde3;
+    z-index: 1000;      
+    padding: 10px 0;    
+    box-shadow: 0 5px 15px #444; 
+}
+body {
+    padding-top: 80px; 
+}
+.map-container {
+    float: right;         
+    margin-left: 20px;    
+    margin-bottom: 20px;  
+    border: 3px double #debdd2; 
+    padding: 5px;
+    background-color: white;
+}
+nav a {
+    position: relative;
+    display: inline-block; 
+    transition: 0.3s;
+    
+}
+
+nav a:hover {
+    top: -5px;      
+    color: #d63384;
+}
+
+a:link {
+    color: #2f0535;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #49115a;
+}
+
+a:hover {
+    color: #d63384;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #53116b;
+}
+
+ol li:first-child {     
+    color: #602b78;       
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h1::before {
+    content: "🌸 ";
+}
+
+dt:after {
+    content: "🍰";
+    font-size: 0.8em;
+    vertical-align: middle;
 }
