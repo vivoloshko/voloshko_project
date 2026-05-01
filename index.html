@@ -6,6 +6,7 @@
     <meta name="author" content="Voloshko Viktoriia">
     <title>Головна</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
     <style>
         body {
             background-color: #debdd2 ; 
@@ -46,16 +47,33 @@
     <p class="intro-text"><span class="brand-name">Voloshko Bakery</span> — це місце, де народжуються найсмачніші та найкрасивіші десерти міста.</p>
 
     <p class="intro-text">У нашій кондитерській ви можете замовити святкові торти, ніжні макаруни, ароматні еклери та багато інших смаколиків для будь-якої події.</p>
+    <p id="text">Наші десерти найсмачніші!</p>
+
+<div style="text-align: center; margin: 30px 0; padding: 20px; background-color: rgba(255, 255, 255, 0.3); border-radius: 10px;">
+    
+    <button onclick="userDialog()" style="padding: 10px 20px; cursor: pointer;">Пошук десерту</button>
+    
+    <button onclick="compareStrings('Макарон Бабл-Гам', 'Чизкейк Нью-Йорк')" style="padding: 10px 20px; cursor: pointer;">Порівняти назви</button>
+    
+    <button onclick="changeBgTemporary()" style="padding: 10px 20px; cursor: pointer;">Змінити фон (30 сек)</button>
+    
+    <button onclick="redirectToGallery()" style="padding: 10px 20px; cursor: pointer;">Галерея (BOM)</button>
+    
+    <button onclick="updatePageContent()" style="padding: 10px 20px; cursor: pointer;">Змінити текст</button>
+    
+    <button onclick="manageElements()" style="padding: 10px 20px; cursor: pointer;">Додати/Видалити елементи</button>
+</div>
 
     <h3 align="center">Наш простір</h3>
 
     <div style="text-align: center;">
         <a href="images/bakery.png" target="_blank">
-            <img src="images/bakery.png" width="600" height="400" alt="Фірмовий торт">
+            <img src="images/bakery.png" width="600" height="400" alt="фото кондитерської">
         </a>
-    </div>
+    
 
-    <p>Натисніть на зображення, щоб переглянути його детальніше </p>
+        <p>Натисніть на зображення, щоб переглянути його детальніше </p>
+    </div>
 
     <h3>Наші переваги:</h3>
     <ul type="circle">
@@ -106,6 +124,16 @@
             Instagram
         </a>
     </p>
+
+
+<script>
+    alert("Ласкаво просимо до кондитерської Voloshko Bakery!");
+    let isReady = confirm("Бажаєте детальніше ознайомитись з нашим асортиментом");
+    if (isReady) {
+        let name = prompt("Як вас звати?", "Гість");
+        alert("Приємно познайомитись, " + name + "!");
+    }
+</script>
 
 </body>
 
