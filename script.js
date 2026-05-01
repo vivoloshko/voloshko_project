@@ -78,7 +78,7 @@ function updatePageContent() {
 
 
 function manageElements() {
-    // createElement + createTextNode
+    
     const note = document.createElement("p");
     const textNode = document.createTextNode("Ми дбаємо про ваш настрій!");
 
@@ -106,7 +106,105 @@ function manageElements() {
     }, 5000);
 }
 
-
 window.onload = function () {
     showDeveloper("Волошко", "Вікторія");
 };
+
+
+
+function handleHeaderClick(event) {
+    event.target.style.color = "pink"; 
+    console.log("onclick (атрибут):", event.target.textContent);
+}
+// 1.2 Обробник через властивість
+const img = document.querySelector("img");
+
+if (img) {
+    img.onclick = function () {
+        this.style.border = "5px solid black";
+        console.log("onclick (властивість)");
+    };
+}
+
+const title = document.getElementById("main-title");
+
+function handlerOne() {
+    console.log("Перший етап обробки");
+}
+
+function handlerTwo() {
+    console.log("Другий етап обробки");
+}
+
+if (title) {
+    title.addEventListener("click", handlerOne);
+    title.addEventListener("click", handlerTwo);
+}
+
+const objHandler = {
+    handleEvent(event) {
+        console.log("handleEvent:", event.currentTarget);
+    }
+};
+
+const list = document.querySelector("ul");
+
+if (list) {
+    list.addEventListener("click", objHandler);
+}
+
+function moveHandler() {
+    console.log("mousemove...");
+}
+
+document.addEventListener("mousemove", moveHandler);
+
+setTimeout(() => {
+    document.removeEventListener("mousemove", moveHandler);
+    console.log("mousemove видалено");
+}, 5000);
+
+
+
+if (list) {
+    list.onclick = function (event) {
+        if (event.target.tagName !== "LI") return;
+
+        Array.from(this.children).forEach(li => {
+            li.style.color = "";
+        });
+
+        event.target.style.color = "orange";
+
+        console.log("Обрано:", event.target.textContent);
+    };
+}
+
+
+const menu = document.getElementById("action-menu");
+
+if (menu) {
+    menu.addEventListener("click", function (event) {
+        const action = event.target.dataset.action;
+        if (!action) return;
+
+        const actions = {
+            order() {
+                alert("Замовлення оформлено");
+            },
+            discount() {
+                alert("Знижка 10%");
+            },
+            reset() {
+                location.reload();
+            }
+        };
+
+        actions[action]?.();
+    });
+}
+
+
+document.body.addEventListener("click", function () {
+    console.log("Подія дійшла до body");
+});
