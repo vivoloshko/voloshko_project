@@ -208,3 +208,92 @@ if (menu) {
 document.body.addEventListener("click", function () {
     console.log("Подія дійшла до body");
 });
+
+
+let ghost, offsetX, offsetY, currentDessert;
+
+document.querySelectorAll('.dessert-item').forEach(dessert => {
+
+    dessert.onmousedown = e => {
+
+        currentDessert = dessert;
+
+        const rect = dessert.getBoundingClientRect();
+
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+
+        ghost = dessert.cloneNode(true);
+
+        ghost.style.cssText = `
+            position: fixed !important;
+            z-index: 9999 !important;
+            pointer-events: none;
+            opacity: 0.9;
+            left: ${rect.left}px;
+            top: ${rect.top}px;
+            width: ${rect.width}px;
+            background: #f2abdc; 
+            border: none;        
+            border-radius: 15px;
+            padding: 15px 25px;
+            box-shadow: 0 12px 35px rgba(69, 27, 47, 0.5);
+            transform: scale(1.05);
+        `;
+
+        document.body.append(ghost);
+
+        currentDessert.style.opacity = '0.4';
+    };
+
+    dessert.addEventListener('mouseover', event => {
+        event.target.closest('.dessert-item').style.background = '#f8c0e7';
+        event.target.closest('.dessert-item').style.transform = 'scale(1.1)';
+        event.target.closest('.dessert-item').style.transition = '0.3s';
+    });
+
+    dessert.addEventListener('mouseout', event => {
+        event.target.closest('.dessert-item').style.background = '#fff';
+        event.target.closest('.dessert-item').style.transform = 'scale(1)';
+    });
+});
+
+document.onmousemove = e => {
+    if (ghost && currentDessert) {
+        ghost.style.left = (e.clientX - offsetX) + 'px';
+        ghost.style.top = (e.clientY - offsetY) + 'px';
+
+        const wiggle = Math.sin(Date.now() * 0.006) * 7;
+        ghost.style.transform = `rotate(${wiggle}deg) scale(1.05)`;
+    }
+};
+
+document.onmouseup = e => {
+    if (ghost && currentDessert) {
+        const cart = document
+            .elementFromPoint(e.clientX, e.clientY)
+            ?.closest('.bakery-cart');
+
+        if (cart) {
+            cart.appendChild(currentDessert);
+            currentDessert.style.transition = '0.3s';
+            currentDessert.style.transform = 'scale(1.1)';
+
+            setTimeout(() => {
+                currentDessert.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        currentDessert.style.opacity = '1';
+
+
+        ghost.style.transition = '0.3s';
+        ghost.style.opacity = '0';
+
+        setTimeout(() => {
+            if (ghost) ghost.remove();
+            ghost = null;
+            currentDessert = null;
+        }, 300);
+    }
+};

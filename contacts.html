@@ -6,6 +6,7 @@
 <meta name="author" content="Voloshko Viktoriia">
 <title>Voloshko Bakery - Контакти</title>
 <link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
 
 <body>
@@ -175,6 +176,80 @@ Telegram: @voloshkobakery
 </tr>
 
 </table>
+
+<style>
+    .bakery-shop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .dessert-box {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    /* Елементи, які можна перетягувати */
+    .dessert-item {
+        background: #fff;
+        border: 2px solid #3a0429;
+        border-radius: 15px;
+        padding: 15px 25px;
+        cursor: grab;
+        font-weight: bold;
+        color: #3a0429;
+        user-select: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .dessert-item:active {
+        cursor: grabbing;
+    }
+
+    .bakery-cart {
+        width: 300px;
+        min-height: 150px;
+        border: 3px dashed #3a0429;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .bakery-cart.hovered {
+        background: #fce4ec; 
+        border-color: #e5bfd8;
+        transform: scale(1.02);
+    }
+
+    .bakery-cart p {
+        color: #3a0429;
+        font-style: italic;
+        pointer-events: none;
+    }
+</style>
+
+<div class="bakery-shop">
+    <h3>Оберіть смаколики для замовлення:</h3>
+    
+    <div class="dessert-box">
+        <div class="dessert-item draggable">Еклер</div>
+        <div class="dessert-item draggable">Чизкейк</div>
+        <div class="dessert-item draggable">Макарон</div>
+    </div>
+
+    <div id="main-cart" class="bakery-cart drop-zone" data-zone="Ваш кошик">
+        <p>Перетягніть десерт сюди</p>
+    </div>
+</div>
 
 <h2 align="center">Завітайте до нашої кондитерської</h2>
 
